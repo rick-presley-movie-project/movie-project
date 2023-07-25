@@ -2,11 +2,7 @@
 // URL
 const DOMAIN = 'http://localhost:3000';
 
-// const URL = `https://api.themoviedb.org/3/movie/157336?api_key=${MOVIE_KEY}&append_to_response=videos`
-
 console.log(DOMAIN)
-//
-// console.log(URL)
 
 const url = `https://api.themoviedb.org/3/movie/157336?api_key=${MOVIE_KEY}`
 

@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: unset;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: unset;
+}
+
+ul{
+    list-style: none;
+    padding-left: 0;
+}
+
+table {
+    border-collapse: collapse;
+}
