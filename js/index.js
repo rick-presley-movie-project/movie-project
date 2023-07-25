@@ -37,7 +37,32 @@ const getMovies = async () => {
 
 //Calling Get All Movies
 (async () => {
-    await getMovies()
+   let results = await getMovies();
+    console.log(results);
+    const movies = results.results;
+    console.log(movies);
+    const moviesRows = results.map((movie) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>
+                <div class="d-flex gap-10 align-center">
+                    <img class="character-image" src="https://via.placeholder.com/50x50">
+                    <p class="character-name">${movie.title}</p>
+                </div>
+            </td>
+            <td>${movie.genre}</td>
+            <td>${movie.id}</td>
+            <td><button>delete</button></td>
+        `
+        let button = row.querySelector('button');
+        button.addEventListener('click', ()=>{
+            row.remove();
+        });
+        return row;
+    });
+    for(let movie of moviesRows) {
+        document.querySelector('#characters tbody').appendChild(movie);
+    }
 })();
 
 
@@ -74,15 +99,15 @@ const createMovie = async (movie) => {
 };
 
 // Calling Create Movie
-(async () => {
-    const movieObject = {
-        title: "Freddie ",
-        genre: "Scary",
-        rating: "4",
-    };
-
-    await createMovie(movieObject);
-})()
+// (async () => {
+//     const movieObject = {
+//         title: "Freddie ",
+//         genre: "Scary",
+//         rating: "4",
+//     };
+//
+//     await createMovie(movieObject);
+// })()
 
 
 
@@ -103,15 +128,15 @@ const editMovie = async (movie) => {
 };
 
 //Calling Editing Movie
-(async () => {
-    const editMovieUpdate = {
-        id: 3,
-        title: "Freddie ",
-        genre: "Scary",
-        rating: "4",
-    }
-    await editMovie(editMovieUpdate);
-})()
+// (async () => {
+//     const editMovieUpdate = {
+//         id: 3,
+//         title: "Freddie ",
+//         genre: "Scary",
+//         rating: "4",
+//     }
+//     await editMovie(editMovieUpdate);
+// })()
 
 
 
