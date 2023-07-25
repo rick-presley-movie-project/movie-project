@@ -8,15 +8,19 @@ console.log(DOMAIN)
 // Get all resources
 const getMovies = async () => {
     const response = await fetch(`${DOMAIN}/movies`);
-    console.log();
+    console.log(response);
     const movies = await response.json();
     console.log(movies);
     return movies;
 };
 
-// getMovies();
+//Calling Get All Movies
+(async () => {
+    await getMovies()
+})();
 
-// Get specific resource
+
+// Get Specific Movie
 const getId = async (id) => {
     const response = await fetch(`${DOMAIN}/movies/${id}`);
     console.log(response);
@@ -25,7 +29,11 @@ const getId = async (id) => {
     return movies;
 };
 
-// getId();
+// Calling Specific Movie
+
+(async () => {
+    await getId(1)
+})();
 
 
 // Create resource
@@ -44,10 +52,16 @@ const createMovie = async (movie) => {
     return apiResponse;
 };
 
-// createMovie();
+(async () => {
+    await createMovie = {
+        title: " ",
+        genre: " ",
+        rating: " ",
+    }
+})()
 
 
-// Edit resource
+// Edit Movie
 const editMovie = async (movie) => {
     const options = {
         method: 'PUT',
@@ -63,7 +77,15 @@ const editMovie = async (movie) => {
     return apiResponse;
 };
 
-// editMovie();
+(async () => {
+    await editMovie = {
+        id: 3,
+        title: "Barbie ",
+        genre: "Comedy",
+        rating: "4",
+    }
+})()
+
 
 
 // Delete resource
@@ -81,6 +103,8 @@ const deleteMovie = async (id) => {
     return apiResponse;
 };
 
-// deleteMovie();
+// (async ()=> {
+//    await deleteMovie(4)
+// })()
 
 
