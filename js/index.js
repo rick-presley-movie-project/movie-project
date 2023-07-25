@@ -54,11 +54,13 @@ const createMovie = async (movie) => {
 
 // Calling Create Movie
 (async () => {
-    await createMovie = {
-        title: " ",
-        genre: " ",
-        rating: " ",
-    }
+    const movieObject = {
+        title: "Freddie ",
+        genre: "Scary",
+        rating: "4",
+    };
+
+    await createMovie(movieObject);
 })()
 
 
@@ -80,14 +82,14 @@ const editMovie = async (movie) => {
 };
 
 //Calling Editing Movie
-(async () => {
-    await editMovie = {
-        id: 3,
-        title: "Barbie ",
-        genre: "Comedy",
-        rating: "4",
-    }
-})()
+// (async () => {
+//     await editMovie = {
+//         id: 3,
+//         title: "Freddie ",
+//         genre: "Scary",
+//         rating: "4",
+//     }
+// })()
 
 
 
