@@ -5,7 +5,7 @@ const DOMAIN = 'http://localhost:3000';
 
 console.log(DOMAIN)
 
-// Get all resources
+// Get All Movies
 const getMovies = async () => {
     const response = await fetch(`${DOMAIN}/movies`);
     console.log(response);
@@ -20,7 +20,7 @@ const getMovies = async () => {
 })();
 
 
-// Get Specific Movie
+// Get a Specific Movie
 const getId = async (id) => {
     const response = await fetch(`${DOMAIN}/movies/${id}`);
     console.log(response);
@@ -52,6 +52,7 @@ const createMovie = async (movie) => {
     return apiResponse;
 };
 
+// Calling Create Movie
 (async () => {
     await createMovie = {
         title: " ",
@@ -59,6 +60,7 @@ const createMovie = async (movie) => {
         rating: " ",
     }
 })()
+
 
 
 // Edit Movie
@@ -77,6 +79,7 @@ const editMovie = async (movie) => {
     return apiResponse;
 };
 
+//Calling Editing Movie
 (async () => {
     await editMovie = {
         id: 3,
@@ -88,7 +91,7 @@ const editMovie = async (movie) => {
 
 
 
-// Delete resource
+// Delete Movie
 const deleteMovie = async (id) => {
     const options = {
         method: 'DELETE',
@@ -103,6 +106,7 @@ const deleteMovie = async (id) => {
     return apiResponse;
 };
 
+// Calling Delete Movie
 // (async ()=> {
 //    await deleteMovie(4)
 // })()
