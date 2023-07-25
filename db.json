@@ -31,28 +31,10 @@
       "id": 5
     },
     {
-      "title": "The Crow",
-      "genre": "Thriller",
-      "rating": "3",
+      "title": "Toy Story",
+      "genre": "Family",
+      "rating": "4",
       "id": 6
-    },
-    {
-      "title": "Bird Box",
-      "genre": "Thriller",
-      "rating": "4",
-      "id": 7
-    },
-    {
-      "title": "Jack The Ripper",
-      "genre": "Crime",
-      "rating": "4",
-      "id": 8
-    },
-    {
-      "title": "Toys",
-      "genre": "Comedy",
-      "rating": "3",
-      "id": 9
     }
   ]
 }

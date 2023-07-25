@@ -31,7 +31,7 @@ table#characters thead th {
     font-weight: 600;
 }
 table#characters thead th:first-child {
-    text-align: left;
+    text-align: center;
 }
 table#characters tbody td {
     padding: 15px 20px;

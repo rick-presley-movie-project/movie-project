@@ -22,109 +22,41 @@ fetch(url, options)
     .catch(err => console.error(err));
 
 
-
-
-
-
-// Get All Movies
-const getMovies = async () => {
-    const response = await fetch(`${DOMAIN}/movies`);
-    console.log(response);
-    const movies = await response.json();
-    console.log(movies);
-    return movies;
-};
-
 //Calling Get All Movies
-(async () => {
-   let results = await getMovies();
-    console.log(results);
-    const movies = results.results;
-    console.log(movies);
-    const moviesRows = results.map((movie) => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>
-                <div class="d-flex gap-10 align-center">
-                    <img class="character-image" src="https://via.placeholder.com/50x50">
-                    <p class="character-name">${movie.title}</p>
-                </div>
-            </td>
-            <td>${movie.genre}</td>
-            <td>${movie.id}</td>
-            <td>${movie.rating}</td>
-            <td><button>delete</button></td>
-        `
-        let button = row.querySelector('button');
-        button.addEventListener('click', ()=>{
-            row.remove();
-        });
-        return row;
-    });
-    for(let movie of moviesRows) {
-        document.querySelector('#characters tbody').appendChild(movie);
-    }
-})();
-
-
-// Get a Specific Movie
-const getId = async (id) => {
-    const response = await fetch(`${DOMAIN}/movies/${id}`);
-    console.log(response);
-    const movies = await response.json();
-    console.log(movies);
-    return movies;
-};
-
-// Calling Specific Movie
-
-(async () => {
-    await getId(3)
-})();
-
-
-// // Create a Movie
-// $(document).ready(function() {
-//     // Event listener for form submission
-//     $("#movieForm").submit(function(event) {
-//         event.preventDefault(); // Prevent default form submission
-//
-//         // Get movie data from the form
-//         const movieObject = {
-//             title: $("#title").val(),
-//             genre: $("#genre").val(),
-//             rating: $("#rating").val()
-//         };
-//
-//         // AJAX POST request to send movie data to the server
-//         $.ajax({
-//             url: `${DOMAIN}/movies`, // Replace DOMAIN with your server endpoint
-//             type: "POST",
-//             contentType: "application/json",
-//             data: JSON.stringify(movieObject),
-//             success: function(response) {
-//                 // Handle the successful response from the server
-//                 console.log("Movie added successfully!");
-//                 console.log(response);
-//
-//                 // Render the new movie in the movieList div
-//                 const movieListItem = $("<div>").text(
-//                     `Title: ${response.title}, Genre: ${response.genre}, Rating: ${response.rating}`
-//                 );
-//                 $("#movieList").append(movieListItem);
-//
-//                 // Clear the form fields after successful submission
-//                 $("#title").val("");
-//                 $("#genre").val("");
-//                 $("#rating").val("");
-//             },
-//             error: function(error) {
-//                 // Handle errors, if any
-//                 console.error("Error adding movie:", error);
-//             }
+// (async () => {
+//    let results = await getMovies();
+//     console.log(results);
+//     const movies = results.results;
+//     console.log(movies);
+//     const moviesRows = results.map((movie) => {
+//         const row = document.createElement('tr');
+//         row.innerHTML = `
+//             <td>
+//                 <div class="d-flex gap-10 align-center">
+//                     <img class="character-image" src="https://via.placeholder.com/50x50">
+//                     <p class="character-name">${movie.title}</p>
+//                 </div>
+//             </td>
+//             <td>${movie.genre}</td>
+//             <td>${movie.id}</td>
+//             <td>${movie.rating}</td>
+//             <td><button>delete</button></td>
+//         `
+//         let button = row.querySelector('button');
+//         button.addEventListener('click', ()=>{
+//             row.remove();
 //         });
+//         return row;
 //     });
-// });
+//     for(let movie of moviesRows) {
+//         document.querySelector('#characters tbody').appendChild(movie);
+//     }
+// })();
+
+
+
+
+// Create a Movie
 $(document).ready(function() {
     function renderMovieList() {
         $.ajax({
@@ -136,7 +68,7 @@ $(document).ready(function() {
 
                 response.forEach(function(movie) {
                     const movieRow = $("<tr>").append(
-                        $("<td>").text(movie.title),
+                        $("<td class='character-name'>").text(movie.title),
                         $("<td>").text(movie.genre),
                         $("<td>").text(movie.id),
                         $("<td>").text(movie.rating),
@@ -147,6 +79,14 @@ $(document).ready(function() {
                                     deleteMovie(movie.id);
                                 })
                         ),
+                        // $("<td>").append(
+                        //     $("<button>")
+                        //         .text("Edit")
+                        //         .click(function() {
+                        //             // Call the editMovie function when the Edit button is clicked
+                        //             editMovieDialog(movie); // Create an edit dialog to update movie details
+                        //         })
+                        // ),
                     );
 
                     $("#characters tbody").append(movieRow);
@@ -206,91 +146,66 @@ $(document).ready(function() {
             }
         });
     }
+
+
 });
 
 
 
+// Edit Movie (Needs Updating)
+// function editMovieDialog(movie) {
+//     const updatedTitle = window.prompt("Enter the updated title:", movie.title);
+//     const updatedGenre = window.prompt("Enter the updated genre:", movie.genre);
+//     const updatedRating = window.prompt("Enter the updated rating:", movie.rating);
+//
+//     if (updatedTitle !== null && updatedGenre !== null && updatedRating !== null) {
+//         const updatedMovie = {
+//             id: movie.id,
+//             title: updatedTitle,
+//             genre: updatedGenre,
+//             rating: updatedRating,
+//         };
+//
+//         // Call the editMovie function with the updated movie object
+//         editMovie(updatedMovie)
+//             .then(() => {
+//                 console.log("Movie updated successfully!");
+//                 renderMovieList(); // Refresh the movie list after updating
+//             })
+//             .catch((error) => {
+//                 console.error("Error updating movie:", error);
+//             });
+//     }
+// }
 
 
 
 
 
 
-
-// const createMovie = async (movie) => {
+// const editMovie = async (movie) => {
 //     const options = {
-//         method: 'POST',
+//         method: 'PUT',
 //         headers: {
 //             'Content-Type': 'application/json'
 //         },
 //         body: JSON.stringify(movie)
 //     };
-//     const response = await fetch(`${DOMAIN}/movies`, options);
+//     const response = await fetch(`${DOMAIN}/movies/${movie.id}`, options);
 //     console.log(response);
 //     const apiResponse = response.json();
 //     console.log(apiResponse);
 //     return apiResponse;
 // };
-
-// // Calling Create Movie
+//
+// // Calling Editing Movie
 // (async () => {
-//     const movieObject = {
+//     const editMovieUpdate = {
+//         id: 3,
 //         title: "Freddie ",
 //         genre: "Scary",
 //         rating: "4",
-//     };
-//
-//     await createMovie(movieObject);
-// })()
-
-
-
-// Edit Movie
-const editMovie = async (movie) => {
-    const options = {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(movie)
-    };
-    const response = await fetch(`${DOMAIN}/movies/${movie.id}`, options);
-    console.log(response);
-    const apiResponse = response.json();
-    console.log(apiResponse);
-    return apiResponse;
-};
-
-// Calling Editing Movie
-(async () => {
-    const editMovieUpdate = {
-        id: 3,
-        title: "Freddie ",
-        genre: "Scary",
-        rating: "4",
-    }
-    await editMovie(editMovieUpdate);
-})()
-
-
-
-// // Delete Movie-- no use
-// const deleteMovie = async (id) => {
-//     const options = {
-//         method: 'DELETE',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         }
-//     };
-//     const response = await fetch(`${DOMAIN}/movies/${id}`, options);
-//     console.log(response);
-//     const apiResponse = response.json();
-//     console.log(apiResponse);
-//     return apiResponse;
-// };
-
-// Calling Delete Movie (Don't Use)
-// (async ()=> {
-//    await deleteMovie(4)
+//     }
+//     await editMovie(editMovieUpdate);
 // })()
 
