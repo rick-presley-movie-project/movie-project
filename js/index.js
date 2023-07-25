@@ -79,14 +79,14 @@ $(document).ready(function() {
                                     deleteMovie(movie.id);
                                 })
                         ),
-                        // $("<td>").append(
-                        //     $("<button>")
-                        //         .text("Edit")
-                        //         .click(function() {
-                        //             // Call the editMovie function when the Edit button is clicked
-                        //             editMovieDialog(movie); // Create an edit dialog to update movie details
-                        //         })
-                        // ),
+                        $("<td>").append(
+                            $("<button>")
+                                .text("Edit")
+                                .click(function() {
+                                    // Call the editMovie function when the Edit button is clicked
+                                    editMovieDialog(movie); // Create an edit dialog to update movie details
+                                })
+                        ),
                     );
 
                     $("#characters tbody").append(movieRow);
@@ -146,66 +146,47 @@ $(document).ready(function() {
             }
         });
     }
+    const editMovie = async (movie) => {
+        const options = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(movie)
+        };
+        const response = await fetch(`${DOMAIN}/movies/${movie.id}`, options);
+        console.log(response);
+        const apiResponse = response.json();
+        console.log(apiResponse);
+        return apiResponse;
+    };
+    function editMovieDialog(movie) {
+    const updatedTitle = window.prompt("Enter the updated title:", movie.title);
+    const updatedGenre = window.prompt("Enter the updated genre:", movie.genre);
+    const updatedRating = window.prompt("Enter the updated rating:", movie.rating);
+
+    if (updatedTitle !== null && updatedGenre !== null && updatedRating !== null) {
+        const updatedMovie = {
+            id: movie.id,
+            title: updatedTitle,
+            genre: updatedGenre,
+            rating: updatedRating,
+        };
+
+        // Call the editMovie function with the updated movie object
+        editMovie(updatedMovie)
+            .then(() => {
+                console.log("Movie updated successfully!");
+                renderMovieList(); // Refresh the movie list after updating
+            })
+            .catch((error) => {
+                console.error("Error updating movie:", error);
+            });
+    }
+}
+
 
 
 });
 
-
-
-// Edit Movie (Needs Updating)
-// function editMovieDialog(movie) {
-//     const updatedTitle = window.prompt("Enter the updated title:", movie.title);
-//     const updatedGenre = window.prompt("Enter the updated genre:", movie.genre);
-//     const updatedRating = window.prompt("Enter the updated rating:", movie.rating);
-//
-//     if (updatedTitle !== null && updatedGenre !== null && updatedRating !== null) {
-//         const updatedMovie = {
-//             id: movie.id,
-//             title: updatedTitle,
-//             genre: updatedGenre,
-//             rating: updatedRating,
-//         };
-//
-//         // Call the editMovie function with the updated movie object
-//         editMovie(updatedMovie)
-//             .then(() => {
-//                 console.log("Movie updated successfully!");
-//                 renderMovieList(); // Refresh the movie list after updating
-//             })
-//             .catch((error) => {
-//                 console.error("Error updating movie:", error);
-//             });
-//     }
-// }
-
-
-
-
-
-
-// const editMovie = async (movie) => {
-//     const options = {
-//         method: 'PUT',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(movie)
-//     };
-//     const response = await fetch(`${DOMAIN}/movies/${movie.id}`, options);
-//     console.log(response);
-//     const apiResponse = response.json();
-//     console.log(apiResponse);
-//     return apiResponse;
-// };
-//
-// // Calling Editing Movie
-// (async () => {
-//     const editMovieUpdate = {
-//         id: 3,
-//         title: "Freddie ",
-//         genre: "Scary",
-//         rating: "4",
-//     }
-//     await editMovie(editMovieUpdate);
-// })()
 

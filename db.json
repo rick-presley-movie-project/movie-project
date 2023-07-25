@@ -4,7 +4,7 @@
       "id": 1,
       "title": "The Godfather",
       "genre": "Crime",
-      "rating": 5
+      "rating": "3"
     },
     {
       "id": 2,
@@ -19,22 +19,22 @@
       "rating": "4"
     },
     {
-      "title": "Freddie ",
-      "genre": "Scary",
-      "rating": "4",
-      "id": 4
-    },
-    {
       "title": "Barbie",
       "genre": "Comedy",
       "rating": "4",
       "id": 5
     },
     {
-      "title": "Toy Story",
+      "title": "Toy Story 2",
       "genre": "Family",
-      "rating": "4",
-      "id": 6
+      "rating": "3",
+      "id": 7
+    },
+    {
+      "title": "Toy story 3",
+      "genre": "Family",
+      "rating": "3",
+      "id": 8
     }
   ]
 }
