@@ -52,6 +52,7 @@ const getMovies = async () => {
             </td>
             <td>${movie.genre}</td>
             <td>${movie.id}</td>
+            <td>${movie.rating}</td>
             <td><button>delete</button></td>
         `
         let button = row.querySelector('button');
@@ -83,20 +84,64 @@ const getId = async (id) => {
 
 
 // Create a Movie
-const createMovie = async (movie) => {
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(movie)
-    };
-    const response = await fetch(`${DOMAIN}/movies`, options);
-    console.log(response);
-    const apiResponse = response.json();
-    console.log(apiResponse);
-    return apiResponse;
-};
+$(document).ready(function() {
+    // Event listener for form submission
+    $("#movieForm").submit(function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Get movie data from the form
+        const movieObject = {
+            title: $("#title").val(),
+            genre: $("#genre").val(),
+            rating: $("#rating").val()
+        };
+
+        // AJAX POST request to send movie data to the server
+        $.ajax({
+            url: `${DOMAIN}/movies`, // Replace DOMAIN with your server endpoint
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(movieObject),
+            success: function(response) {
+                // Handle the successful response from the server
+                console.log("Movie added successfully!");
+                console.log(response);
+
+                // Render the new movie in the movieList div
+                const movieListItem = $("<div>").text(
+                    `Title: ${response.title}, Genre: ${response.genre}, Rating: ${response.rating}`
+                );
+                $("#movieList").append(movieListItem);
+
+                // Clear the form fields after successful submission
+                $("#title").val("");
+                $("#genre").val("");
+                $("#rating").val("");
+            },
+            error: function(error) {
+                // Handle errors, if any
+                console.error("Error adding movie:", error);
+            }
+        });
+    });
+});
+
+
+
+// const createMovie = async (movie) => {
+//     const options = {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(movie)
+//     };
+//     const response = await fetch(`${DOMAIN}/movies`, options);
+//     console.log(response);
+//     const apiResponse = response.json();
+//     console.log(apiResponse);
+//     return apiResponse;
+// };
 
 // // Calling Create Movie
 // (async () => {

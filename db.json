@@ -1,10 +1,16 @@
 {
   "movies": [
     {
-      "id": 2,
+      "id": 1,
       "title": "The Godfather",
       "genre": "Crime",
       "rating": 5
+    },
+    {
+      "id": 2,
+      "title": "Freddie ",
+      "genre": "Scary",
+      "rating": "4"
     },
     {
       "id": 3,
@@ -19,10 +25,16 @@
       "id": 4
     },
     {
-      "title": "Freddie ",
-      "genre": "Scary",
+      "title": "Barbie",
+      "genre": "Comedy",
       "rating": "4",
       "id": 5
+    },
+    {
+      "title": "The Crow",
+      "genre": "Thriller",
+      "rating": "3",
+      "id": 6
     }
   ]
 }
