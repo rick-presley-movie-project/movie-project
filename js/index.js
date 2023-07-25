@@ -1,9 +1,34 @@
 "use strict";
-
+// URL
 const DOMAIN = 'http://localhost:3000';
 
+// const URL = `https://api.themoviedb.org/3/movie/157336?api_key=${MOVIE_KEY}&append_to_response=videos`
 
 console.log(DOMAIN)
+//
+// console.log(URL)
+
+const url = `https://api.themoviedb.org/3/movie/157336?api_key=${MOVIE_KEY}`
+
+console.log(url)
+
+const options = {
+    method: 'GET',
+    headers: {
+        accept: 'application/json',
+        Authorization: `token ${MOVIE_KEY}`
+    }
+};
+
+fetch(url, options)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
+
+
+
+
+
 
 // Get All Movies
 const getMovies = async () => {
@@ -111,7 +136,7 @@ const deleteMovie = async (id) => {
 
 // Calling Delete Movie
 (async ()=> {
-   await deleteMovie(4)
+   await deleteMovie(0)
 })()
 
 
