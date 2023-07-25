@@ -1,12 +1,6 @@
 {
   "movies": [
     {
-      "id": 1,
-      "title": "The Shawshank Redemption",
-      "genre": "Drama",
-      "rating": 5
-    },
-    {
       "id": 2,
       "title": "The Godfather",
       "genre": "Crime",
@@ -17,6 +11,18 @@
       "title": "Freddie ",
       "genre": "Scary",
       "rating": "4"
+    },
+    {
+      "title": "Freddie ",
+      "genre": "Scary",
+      "rating": "4",
+      "id": 4
+    },
+    {
+      "title": "Freddie ",
+      "genre": "Scary",
+      "rating": "4",
+      "id": 5
     }
   ]
 }

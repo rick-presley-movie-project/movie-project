@@ -78,7 +78,7 @@ const getId = async (id) => {
 // Calling Specific Movie
 
 (async () => {
-    await getId(1)
+    await getId(3)
 })();
 
 
@@ -98,7 +98,7 @@ const createMovie = async (movie) => {
     return apiResponse;
 };
 
-// Calling Create Movie
+// // Calling Create Movie
 // (async () => {
 //     const movieObject = {
 //         title: "Freddie ",
@@ -127,16 +127,16 @@ const editMovie = async (movie) => {
     return apiResponse;
 };
 
-//Calling Editing Movie
-// (async () => {
-//     const editMovieUpdate = {
-//         id: 3,
-//         title: "Freddie ",
-//         genre: "Scary",
-//         rating: "4",
-//     }
-//     await editMovie(editMovieUpdate);
-// })()
+// Calling Editing Movie
+(async () => {
+    const editMovieUpdate = {
+        id: 3,
+        title: "Freddie ",
+        genre: "Scary",
+        rating: "4",
+    }
+    await editMovie(editMovieUpdate);
+})()
 
 
 
@@ -155,9 +155,9 @@ const deleteMovie = async (id) => {
     return apiResponse;
 };
 
-// Calling Delete Movie
-(async ()=> {
-   await deleteMovie(0)
-})()
+// Calling Delete Movie (Don't Use)
+// (async ()=> {
+//    await deleteMovie(4)
+// })()
 
 
