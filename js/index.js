@@ -82,14 +82,15 @@ const editMovie = async (movie) => {
 };
 
 //Calling Editing Movie
-// (async () => {
-//     await editMovie = {
-//         id: 3,
-//         title: "Freddie ",
-//         genre: "Scary",
-//         rating: "4",
-//     }
-// })()
+(async () => {
+    const editMovieUpdate = {
+        id: 3,
+        title: "Freddie ",
+        genre: "Scary",
+        rating: "4",
+    }
+    await editMovie(editMovieUpdate);
+})()
 
 
 
@@ -109,8 +110,8 @@ const deleteMovie = async (id) => {
 };
 
 // Calling Delete Movie
-// (async ()=> {
-//    await deleteMovie(4)
-// })()
+(async ()=> {
+   await deleteMovie(4)
+})()
 
 
