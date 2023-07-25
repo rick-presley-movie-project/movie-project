@@ -1,0 +1,53 @@
+:root {
+    --primary: rgb(0, 33, 66);
+    --primary-light: rgba(0, 33, 66, 0.1);
+    --secondary: rgb(191, 191, 191);
+    --secondary-light: rgba(191, 191, 191, 0.2);
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: sans-serif;
+}
+.container.characters {
+    padding: 40px 0;
+}
+table#characters {
+    border-collapse: collapse;
+    width: 100%;
+}
+table#characters thead {
+    background-color: var(--primary);
+    color: white;
+}
+table#characters thead th {
+    padding: 10px 20px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+table#characters thead th:first-child {
+    text-align: left;
+}
+table#characters tbody td {
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 12px;
+}
+table#characters tbody > tr:nth-child(even) {
+    background-color: var(--secondary-light);
+}
+table#characters img.character-image {
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+table#characters .character-name {
+    font-weight: 600;
+    text-transform: uppercase;
+}
