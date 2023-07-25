@@ -36,7 +36,7 @@ const getId = async (id) => {
 })();
 
 
-// Create resource
+// Create a Movie
 const createMovie = async (movie) => {
     const options = {
         method: 'POST',
