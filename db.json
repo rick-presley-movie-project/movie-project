@@ -35,6 +35,12 @@
       "genre": "Family",
       "rating": "3",
       "id": 8
+    },
+    {
+      "title": "Cars",
+      "genre": "Family",
+      "rating": "3",
+      "id": 9
     }
   ]
 }
