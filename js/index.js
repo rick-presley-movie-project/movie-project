@@ -1,26 +1,23 @@
 "use strict";
 // URL
 const DOMAIN = 'http://localhost:3000';
+console.log(DOMAIN);
 
-console.log(DOMAIN)
-
-const url = `https://api.themoviedb.org/3/movie/157336?api_key=${MOVIE_KEY}`
-
-console.log(url)
-
-const options = {
-    method: 'GET',
-    headers: {
-        accept: 'application/json',
-        Authorization: `token ${MOVIE_KEY}`
-    }
-};
-
-fetch(url, options)
-    .then(response => response.json())
-    .then(response => console.log(response))
-    .catch(err => console.error(err));
-
+// Add movie
+const showPopupButton = document.getElementById('showPopupButton');
+const popupContainer = document.getElementById('popupContainer');
+const submitButton = document.getElementById('submitButton');
+// Function to show the modal
+function showPopup() {
+    popupContainer.style.display = 'block';
+}
+// Function to hide the modal
+function hidePopup() {
+    popupContainer.style.display = 'none';
+}
+// Attach click event to the button
+showPopupButton.addEventListener('click', showPopup);
+submitButton.addEventListener('click', hidePopup);
 
 
 // Create, Edit and Delete a Movie
@@ -51,8 +48,7 @@ $(document).ready(function() {
                             $("<button>")
                                 .text("Edit")
                                 .click(function() {
-                                    // Call the editMovie function when the Edit button is clicked
-                                    showEditDialog(movie); // Create an edit dialog to update movie details
+                                    showEditDialog(movie);
                                 })
                         ),
                     );
@@ -103,12 +99,11 @@ $(document).ready(function() {
     // Delete Function
     function deleteMovie(movieId) {
         $.ajax({
-            url: `${DOMAIN}/movies/${movieId}`, // Replace with the actual endpoint for deleting a movie by ID
+            url: `${DOMAIN}/movies/${movieId}`,
             type: "DELETE",
             success: function(response) {
                 console.log("Movie deleted successfully!");
 
-                // Fetch and render the updated list of movies after a movie is deleted
                 renderMovieList();
             },
             error: function(error) {
@@ -158,7 +153,6 @@ $(document).ready(function() {
         showEditDialog(movie);
     });
 
-    // Attach click event to the Update button in the edit dialog
     $("#btnUpdateMovie").click(function() {
         const updatedMovie = {
             id: $("#editMovieId").val(),
@@ -167,7 +161,6 @@ $(document).ready(function() {
             rating: $("#editRating").val(),
         };
 
-        // Call the editMovie function with the updated movie object
         editMovie(updatedMovie)
             .then(() => {
                 console.log("Movie updated successfully!");
@@ -178,6 +171,7 @@ $(document).ready(function() {
                 console.error("Error updating movie:", error);
             });
     });
+    // edit form for required fields.
     $('#editForm > input').keyup(function() {
 
         let empty = false;

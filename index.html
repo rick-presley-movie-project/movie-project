@@ -33,22 +33,23 @@
             </tbody>
         </table>
         <br>
+        <!-- Hidden dialog for adding movies -->
         <div>
-            <h2>Add New Movie</h2>
+            <button id="showPopupButton">Add New Movie</button>
             <br>
+            <div id="popupContainer" class="dialog" style="display: none;">
+                <h2>Add Movie</h2>
             <form id="movieForm" class="d-flex">
-                <div>
                     <label for="title">Title</label>
                     <input type="text" id="title" required>
                     <label for="genre">Genre</label>
                     <input type="text" id="genre" required>
                     <label for="rating">Rating</label>
                     <input type="number" id="rating" required>
-                    <button type="submit">Add Movie</button>
-                </div>
+                    <button type="submit" id="submitButton">Add Movie</button>
             </form>
+            </div>
         </div>
-        <br>
         <!-- Hidden dialog for editing movies -->
         <div id="editDialog" class="dialog" style="display: none;">
             <h2>Edit Movie</h2>

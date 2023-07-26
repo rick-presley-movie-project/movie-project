@@ -19,10 +19,10 @@
       "rating": "4"
     },
     {
+      "id": 5,
       "title": "Barbie",
       "genre": "Comedy",
-      "rating": "4",
-      "id": 5
+      "rating": "3"
     }
   ]
 }
