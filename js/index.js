@@ -22,12 +22,18 @@ submitButton.addEventListener('click', hidePopup);
 
 // Create, Edit and Delete a Movie
 $(document).ready(function() {
-    //Create Movie Function
+    //Create Movie Function-- Sorts titles in alphabetical order--
     function renderMovieList() {
         $.ajax({
             url: `${DOMAIN}/movies`,
             type: "GET",
             success: function(response) {
+                // Sort the movies by title before rendering
+                response.sort(function(a, b) {
+                    // Use localeCompare for case-insensitive sorting
+                    return a.title.localeCompare(b.title);
+                });
+
                 // Clear the table body before rendering the updated list
                 $("#characters tbody").empty();
 

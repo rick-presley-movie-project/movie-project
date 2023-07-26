@@ -23,6 +23,12 @@
       "title": "Barbie",
       "genre": "Comedy",
       "rating": "3"
+    },
+    {
+      "title": "cars",
+      "genre": "Family",
+      "rating": "4",
+      "id": 6
     }
   ]
 }
