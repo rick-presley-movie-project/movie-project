@@ -23,24 +23,6 @@
       "genre": "Comedy",
       "rating": "4",
       "id": 5
-    },
-    {
-      "title": "Toy Story 2",
-      "genre": "Family",
-      "rating": "3",
-      "id": 7
-    },
-    {
-      "title": "Toy story 3",
-      "genre": "Family",
-      "rating": "3",
-      "id": 8
-    },
-    {
-      "title": "Cars",
-      "genre": "Family",
-      "rating": "4",
-      "id": 9
     }
   ]
 }
