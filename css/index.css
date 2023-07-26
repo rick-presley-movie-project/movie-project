@@ -9,7 +9,7 @@
     padding: 0;
 }
 body {
-    font-family: sans-serif;
+    font-family: 'Indie Flower', cursive;
 }
 .container.characters {
     padding: 40px 0;
@@ -26,7 +26,7 @@ table#characters thead th {
     padding: 10px 20px;
     text-align: center;
     text-transform: uppercase;
-    font-size: 11px;
+    font-size: 15px;
     letter-spacing: 1px;
     font-weight: 600;
 }
@@ -36,7 +36,7 @@ table#characters thead th:first-child {
 table#characters tbody td {
     padding: 15px 20px;
     text-align: center;
-    font-size: 12px;
+    font-size: 15px;
 }
 table#characters tbody > tr:nth-child(even) {
     background-color: var(--secondary-light);
@@ -50,6 +50,7 @@ table#characters img.character-image {
 table#characters .character-name {
     font-weight: 600;
     text-transform: uppercase;
+    font-size: 15px;
 }
 
 .dialog {
