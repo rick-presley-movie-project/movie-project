@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Movie Project</title>
-    <script src="js/keys.js"></script>
+
     <link rel="stylesheet" href="css/index.css">
 
 
@@ -29,9 +29,10 @@
                 <!-- Movie rows will be dynamically populated here -->
                 </tbody>
             </table>
-
+        <br>
         <div>
             <h2>Add New Movie</h2>
+            <br>
             <form id="movieForm" class="d-flex">
                 <div>
                     <label for="title">Title</label>
@@ -44,11 +45,26 @@
                 </div>
             </form>
         </div>
+        <br>
+        <!-- Hidden dialog for editing movies -->
+        <div id="editDialog" class="dialog" style="display: none;">
+            <h2>Edit Movie</h2>
+            <br>
+            <input type="hidden" id="editMovieId">
+            <label for="editTitle">Title:</label>
+            <input type="text" id="editTitle">
+            <label for="editGenre">Genre:</label>
+            <input type="text" id="editGenre">
+            <label for="editRating">Rating:</label>
+            <input type="text" id="editRating">
+            <button id="btnUpdateMovie">Update</button>
+        </div>
+    </div>
 </div>
 
 
 
-
+<script src="js/keys.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 <script src="js/index.js"></script>
 </body>

@@ -8,9 +8,9 @@
     },
     {
       "id": 2,
-      "title": "Freddie ",
-      "genre": "Scary",
-      "rating": "4"
+      "title": "Jason",
+      "genre": "Thriller",
+      "rating": "5"
     },
     {
       "id": 3,
@@ -37,10 +37,10 @@
       "id": 8
     },
     {
-      "title": "Cars",
+      "id": 9,
+      "title": "Cars 2",
       "genre": "Family",
-      "rating": "3",
-      "id": 9
+      "rating": "5"
     }
   ]
 }

@@ -22,42 +22,10 @@ fetch(url, options)
     .catch(err => console.error(err));
 
 
-//Calling Get All Movies
-// (async () => {
-//    let results = await getMovies();
-//     console.log(results);
-//     const movies = results.results;
-//     console.log(movies);
-//     const moviesRows = results.map((movie) => {
-//         const row = document.createElement('tr');
-//         row.innerHTML = `
-//             <td>
-//                 <div class="d-flex gap-10 align-center">
-//                     <img class="character-image" src="https://via.placeholder.com/50x50">
-//                     <p class="character-name">${movie.title}</p>
-//                 </div>
-//             </td>
-//             <td>${movie.genre}</td>
-//             <td>${movie.id}</td>
-//             <td>${movie.rating}</td>
-//             <td><button>delete</button></td>
-//         `
-//         let button = row.querySelector('button');
-//         button.addEventListener('click', ()=>{
-//             row.remove();
-//         });
-//         return row;
-//     });
-//     for(let movie of moviesRows) {
-//         document.querySelector('#characters tbody').appendChild(movie);
-//     }
-// })();
 
-
-
-
-// Create a Movie
+// Create, Edit and Delete a Movie
 $(document).ready(function() {
+    //Create Movie Function
     function renderMovieList() {
         $.ajax({
             url: `${DOMAIN}/movies`,
@@ -84,7 +52,7 @@ $(document).ready(function() {
                                 .text("Edit")
                                 .click(function() {
                                     // Call the editMovie function when the Edit button is clicked
-                                    editMovieDialog(movie); // Create an edit dialog to update movie details
+                                    showEditDialog(movie); // Create an edit dialog to update movie details
                                 })
                         ),
                     );
@@ -128,9 +96,11 @@ $(document).ready(function() {
             }
         });
     });
-
     renderMovieList();
 
+
+
+    // Delete Function
     function deleteMovie(movieId) {
         $.ajax({
             url: `${DOMAIN}/movies/${movieId}`, // Replace with the actual endpoint for deleting a movie by ID
@@ -146,6 +116,10 @@ $(document).ready(function() {
             }
         });
     }
+
+
+
+    // Edit Function
     const editMovie = async (movie) => {
         const options = {
             method: 'PUT',
@@ -160,17 +134,37 @@ $(document).ready(function() {
         console.log(apiResponse);
         return apiResponse;
     };
-    function editMovieDialog(movie) {
-    const updatedTitle = window.prompt("Enter the updated title:", movie.title);
-    const updatedGenre = window.prompt("Enter the updated genre:", movie.genre);
-    const updatedRating = window.prompt("Enter the updated rating:", movie.rating);
 
-    if (updatedTitle !== null && updatedGenre !== null && updatedRating !== null) {
+
+
+    // New function to show the edit dialog
+    function showEditDialog(movie) {
+        $("#editMovieId").val(movie.id);
+        $("#editTitle").val(movie.title);
+        $("#editGenre").val(movie.genre);
+        $("#editRating").val(movie.rating);
+
+        $("#editDialog").show();
+    }
+
+    // Attach click event to the Edit button in the table rows
+    $(document).on("click", ".btnEdit", function() {
+        const movie = {
+            id: $(this).closest("tr").find(".movie-id").text(),
+            title: $(this).closest("tr").find(".character-name").text(),
+            genre: $(this).closest("tr").find(".movie-genre").text(),
+            rating: $(this).closest("tr").find(".movie-rating").text(),
+        };
+        showEditDialog(movie);
+    });
+
+    // Attach click event to the Update button in the edit dialog
+    $("#btnUpdateMovie").click(function() {
         const updatedMovie = {
-            id: movie.id,
-            title: updatedTitle,
-            genre: updatedGenre,
-            rating: updatedRating,
+            id: $("#editMovieId").val(),
+            title: $("#editTitle").val(),
+            genre: $("#editGenre").val(),
+            rating: $("#editRating").val(),
         };
 
         // Call the editMovie function with the updated movie object
@@ -178,15 +172,12 @@ $(document).ready(function() {
             .then(() => {
                 console.log("Movie updated successfully!");
                 renderMovieList(); // Refresh the movie list after updating
+                $("#editDialog").hide(); // Hide the edit dialog
             })
             .catch((error) => {
                 console.error("Error updating movie:", error);
             });
-    }
-}
-
-
-
+    });
 });
 
 
