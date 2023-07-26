@@ -149,7 +149,7 @@ $(document).ready(function() {
 
     // Attach click event to the Edit button in the table rows
     $(document).on("click", ".btnEdit", function() {
-        const movie = {
+         const movie = {
             id: $(this).closest("tr").find(".movie-id").text(),
             title: $(this).closest("tr").find(".character-name").text(),
             genre: $(this).closest("tr").find(".movie-genre").text(),
@@ -177,6 +177,23 @@ $(document).ready(function() {
             .catch((error) => {
                 console.error("Error updating movie:", error);
             });
+    });
+    $('#editForm > input').keyup(function() {
+
+        let empty = false;
+        $('#editForm > input').each(function() {
+            if ($(this).val() === '') {
+                empty = true;
+            }
+        });
+
+        if (empty) {
+            $('#btnUpdateMovie').attr('disabled', 'disabled');
+            $('#editWarning').css('display', 'block')
+        } else {
+            $('#btnUpdateMovie').removeAttr('disabled');
+            $('#editWarning').css('display', 'none');
+        }
     });
 });
 

@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-<div class="container align-text-center">
-    <h1>Movie Project</h1>
-</div>
 <div class="page-wrapper">
+    <div class="container d-flex align-text-center">
+         <h1>Movie Project</h1>
+    </div>
     <div class="container">
         <table id="characters">
             <thead>
@@ -50,14 +50,17 @@
         <div id="editDialog" class="dialog" style="display: none;">
             <h2>Edit Movie</h2>
             <br>
-            <input type="hidden" id="editMovieId">
-            <label for="editTitle">Title:</label>
-            <input type="text" id="editTitle">
-            <label for="editGenre">Genre:</label>
-            <input type="text" id="editGenre">
-            <label for="editRating">Rating:</label>
-            <input type="text" id="editRating">
-            <button id="btnUpdateMovie">Update</button>
+            <form id="editForm">
+                <input type="hidden" id="editMovieId" required>
+                <label for="editTitle">Title:</label>
+                <input type="text" id="editTitle">
+                <label for="editGenre">Genre:</label>
+                <input type="text" id="editGenre">
+                <label for="editRating">Rating:</label>
+                <input type="text" id="editRating">
+                <button id="btnUpdateMovie" disabled="disabled">Update</button>
+                <div id="editWarning">Please fill out all fields!</div>
+            </form>
         </div>
     </div>
 </div>
