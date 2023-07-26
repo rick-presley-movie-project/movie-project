@@ -65,6 +65,9 @@ table#characters .character-name {
 #editWarning{
     color: red;
 }
+#addWarning {
+    color: red;
+}
 h1 {
     text-align: center;
     font-size: 60px;

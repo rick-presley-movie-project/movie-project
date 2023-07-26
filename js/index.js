@@ -10,6 +10,23 @@ const submitButton = document.getElementById('submitButton');
 // Function to show the modal
 function showPopup() {
     popupContainer.style.display = 'block';
+    $('#movieForm> input').keyup(function() {
+
+        let empty = false;
+        $('#movieForm > input').each(function() {
+            if ($(this).val() === '') {
+                empty = true;
+            }
+        });
+
+        if (empty) {
+            $('#submitButton').attr('disabled', 'disabled');
+            $('#addWarning').css('display', 'block')
+        } else {
+            $('#submitButton').removeAttr('disabled');
+            $('#addWarning').css('display', 'none');
+        }
+    });
 }
 // Function to hide the modal
 function hidePopup() {
